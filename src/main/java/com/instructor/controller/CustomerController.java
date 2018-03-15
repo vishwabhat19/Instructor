@@ -28,19 +28,20 @@ public class CustomerController {
 		
 	}
 	
+	@ModelAttribute("command")
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model model){
-		Customer customer = new Customer();
+		//Customer customer = new Customer();
 		
-		model.addAttribute("customer",customer);
+		model.addAttribute("customer",new Customer());
 		
 		return "customer-form";
 	}
 	
 	@PostMapping("/saveCustomer")
-	public String saveCustomer(@ModelAttribute("customer") Customer customer){
+	public String saveCustomer(@ModelAttribute("customer") Customer thecustomer){
 		
-		customerRepository.save(customer);
+		customerRepository.save(thecustomer);
 		
 		return "redirect:/customer/list";
 	}
