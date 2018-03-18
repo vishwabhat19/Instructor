@@ -24,6 +24,7 @@
 		
 		<table>
 			<tr>
+				<th>Customer Id</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Email</th>	
@@ -31,10 +32,17 @@
 			</tr>
 			
 			<c:forEach var="tempCustomer" items="${customers}">
+			<!-- Construct a delete link with customerId -->
+			
+			<c:url var="deleteLink" value="/customer/delete">
+				<c:param name="customerId" value="${tempCustomer.id}"></c:param>
+			</c:url>
 			<tr>
+				<td>${tempCustomer.id}</td>
 				<td>${tempCustomer.firstName}</td>
 				<td>${tempCustomer.lastName}</td>
 				<td>${tempCustomer.email}</td>
+				<td><a href="${deleteLink}">Delete</a></td>
 			</tr>
 			</c:forEach>
 			
