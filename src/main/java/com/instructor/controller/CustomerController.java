@@ -3,10 +3,11 @@ package com.instructor.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.instructor.entity.Customer;
 import com.instructor.repository.CustomerRepository;
@@ -28,12 +29,12 @@ public class CustomerController {
 		
 	}
 	
-	@ModelAttribute("command")
-	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(Model model){
+	
+	@RequestMapping(value="/showFormForAdd",method=RequestMethod.GET)
+	public String showFormForAdd(ModelMap model){
 		//Customer customer = new Customer();
 		
-		model.addAttribute("customer",new Customer());
+		model.addAttribute("customer", new Customer());
 		
 		return "customer-form";
 	}

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>List Customers</title>
 
-<link type="text/css" rel="stylesheet" href="{pageContext.request.contextPath}/resources/CSS/style.css">
+<link type="text/css" rel="stylesheet" href="/style.css">
 </head>
 <body>
 	<div id ="wrapper">
@@ -31,11 +31,13 @@
 			</tr>
 			
 			<c:forEach var="tempCustomer" items="${customers}">
+			<tr>
 				<td>${tempCustomer.firstName}</td>
 				<td>${tempCustomer.lastName}</td>
 				<td>${tempCustomer.email}</td>
-			
+			</tr>
 			</c:forEach>
+			
 		</table>
 		
 	</div>
