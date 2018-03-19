@@ -1,5 +1,7 @@
 package com.instructor.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,11 +52,22 @@ public class CustomerController {
 	}
 	
 	@GetMapping(value="/delete")
-	public String deleteCustomer(@RequestParam("id") int ID){
+	public String deleteCustomer(@RequestParam("customerId") int ID){
 		
 		customerRepository.deleteById(ID);
 		
 		return "redirect:/customer/list";
 	}
 	
+	@GetMapping(value="/update")
+	public String updateCustomer(@RequestParam("customerId") int ID,ModelMap map){
+		
+		Optional<Customer> optional = customerRepository.findById(ID);
+		
+		if(optional.isPresent()){
+			map.addAttribute("customer", optional.get());
+		}
+		
+		return "add-customer-form";
+	}
 }

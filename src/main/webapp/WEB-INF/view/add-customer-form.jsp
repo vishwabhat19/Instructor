@@ -12,6 +12,8 @@
 <body>
 
  <form:form method="POST" modelAttribute="customer" action="saveCustomer">
+ 
+ <form:hidden path="id"/>
 <table>
 
 <tbody>
